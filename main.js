@@ -15,7 +15,7 @@ function task_reset() {
     reset.addEventListener('click', resetTask, false);
     function resetTask() {
         console.log('reset')
-        fetch('http://127.0.0.1:8000/api/delete_values')
+        fetch('http://35.202.191.117:8000/api/delete_values')
             .catch(alert);
         setTimeout(function () {
             window.location.reload()
@@ -25,7 +25,7 @@ function task_reset() {
     return reset
 }
 function get_current_values() {
-    fetch('http://127.0.0.1:8000/api/get_values')
+    fetch('http://35.202.191.117:8000/api/get_values')
         .then(function (response) {
             return response.json();
         })
@@ -204,7 +204,7 @@ function createbutton() {
         field = document.getElementById('fieldarea');
         coin_field = document.getElementById('pCoins');
         console.log(field.value)
-        let url = 'http://127.0.0.1:8000/api/check_task';
+        let url = 'http://35.202.191.117:8000/api/check_task';
         let data = {
             task_string: field.value,
             level: hard_level,
@@ -264,7 +264,7 @@ function nexttask() {
         task_name = document.getElementById('heading'); // Для смены Названия <-------heading
         task_description = document.getElementById('Extest');// Для описания задачи<--Extext
         theory = document.getElementById('Answer');
-        let url = 'http://127.0.0.1:8000/api/get_task'; // action = get_task-----------
+        let url = 'http://35.202.191.117:8000/api/get_task'; // action = get_task-----------
         let data = {
             level: hard_level,
             task: task_number
@@ -320,7 +320,7 @@ function createShop() {
     shopwindow.style.flexDirection = 'column';
     shopwindow.style.alignItems = 'center';
 
-    let urlblock = "http://127.0.0.1:8000/api/change_lvl"; // api для смены блока задач
+    let urlblock = "http://35.202.191.117:8000/api/change_lvl"; // api для смены блока задач
         let discription = document.createElement('h1');
         discription.textContent = 'Shop of Tasks';
         discription.style.fontSize = '24px';
