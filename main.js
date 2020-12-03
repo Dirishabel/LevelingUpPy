@@ -1,7 +1,7 @@
 let coins = 0; // #TODO: Прикрутить Куки файлы к восстановлению очков и прогрессу участника
 let hard_level = 0; // Уровень сложности
 let task_number = -1;// Номер выполняемого задания
-let server_route = 'https://35.202.191.117:443/api/' //Максимальное количество заданий в модуле
+let server_route = 'https://34.70.57.26:443/api/' //Максимальное количество заданий в модуле
 
 function task_reset() {
     let reset = document.createElement('div')
@@ -16,27 +16,17 @@ function task_reset() {
     function resetTask() {
         console.log('reset')
         fetch(server_route+'delete_values')
-            .catch(alert);
-        setTimeout(function () {
-            window.location.reload()
-        }, 20);
+        .then(function (message){
+                window.location.reload()
+        })
+        .catch(alert);
+        
 
     }
     return reset
 }
 function get_current_values() {
-    fetch(server_route+'get_values')
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (task) {
-            message_response = task;
-            console.log(JSON.stringify(message_response));
-            coins = message_response.coins;
-            hard_level = message_response.level;
-            task_number = message_response.task;
-        })
-        .catch(alert);
+    
 }
 
 
@@ -402,10 +392,10 @@ function createShop() {
                 headers: { "content-type": "application/json; charset=utf-8" },
                 body: JSON.stringify(data)
             })
-                .catch(alert);
-            setTimeout(function () {
+            .then(function (message){
                 window.location.reload()
-            }, 100)
+            })
+                .catch(alert);
             //------------------------------------------------------------Запрос на сервер
             }    
     shopwindow.appendChild(discription);
@@ -420,16 +410,25 @@ window.onload = function () {
     window_div.style.marginLeft = '25%';
     window_div.style.marginRight = '25%';
     document.body.style.margin = '0px';
-    get_current_values()
-    setTimeout(function () {
-        document.body.appendChild(creteBackground());
-        document.body.appendChild(createShop());
-        window_div.appendChild(task_reset());
-        window_div.appendChild(createTextExhample());
-        window_div.appendChild(createfield());
-        window_div.appendChild(createBackplate());
-        
-        
-    }, 100);
+    fetch(server_route+'get_values')
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (task) {
+            message_response = task;
+            console.log(JSON.stringify(message_response));
+            coins = message_response.coins;
+            hard_level = message_response.level;
+            task_number = message_response.task;
+
+            
+            window_div.appendChild(task_reset());
+            window_div.appendChild(createTextExhample());
+            window_div.appendChild(createfield());
+            window_div.appendChild(createBackplate());
+        })
+        .catch(alert);
+    document.body.appendChild(creteBackground());
+    document.body.appendChild(createShop());
     document.body.appendChild(window_div);
 }
