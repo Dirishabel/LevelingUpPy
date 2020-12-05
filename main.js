@@ -386,11 +386,10 @@ function createShop() {
             method: 'POST',
             headers: { "content-type": "application/json; charset=utf-8" },
             body: JSON.stringify(data)
-        })
-            .catch(alert);
-        setTimeout(function () {
+        }).then(function() {
             window.location.reload()
-        }, 100)
+        })
+        .catch(alert);
         //------------------------------------------------------------Запрос на сервер
     }
     shopwindow.appendChild(discription);
