@@ -310,7 +310,7 @@ function createShop() {
     shopwindow.style.flexDirection = 'column';
     shopwindow.style.alignItems = 'center';
 
-    let urlblock = server_route+"change_lvl"; // api для смены блока задач
+    let urlblock = "http://127.0.0.1:8000/api/change_lvl"; // api для смены блока задач
         let discription = document.createElement('h1');
         discription.textContent = 'Shop of Tasks';
         discription.style.fontSize = '24px';
@@ -320,65 +320,60 @@ function createShop() {
         firstblock.style.width = '80%';
         firstblock.style.maxHeight = '10%';
         firstblock.style.marginTop = '3%';
-        firstblock.style.backgroundColor = '#FFFFFF';
-        firstblock.style.opacity = '20%';
-        firstblock.textContent = 'Простейшая алгебра Price: 5 coins'; //TODO: Смена цены
+        firstblock.style.backgroundColor = '#001d18';
+        firstblock.style.opacity = '100%';
+        firstblock.textContent = 'Простейшая алгебра Price: Basic block'; //TODO: Смена цены
         firstblock.style.fontSize = '24px';
         firstblock.style.color = '#000000';
         firstblock.style.textAlign = 'center';
         firstblock.style.paddingTop = '10%';
         firstblock.style.paddingBottom = '10%';
+        firstblock.style.borderRadius = '0 10px';
         firstblock.onmouseover = function(){   
-                firstblock.style.opacity = '100%';               
+                firstblock.style.backgroundColor = '#00b899';               
         }
         firstblock.onmouseout = function(){   
-            firstblock.style.opacity = '20%';               
+            firstblock.style.backgroundColor = '#001d18';              
         }      
         firstblock.addEventListener('click', () => changeto(0), false)
 
         let secondblock = document.createElement('div');
         secondblock.style.width = '80%';
         secondblock.style.maxHeight = '10%';
-        secondblock.style.backgroundColor = '#871700';
+        secondblock.style.backgroundColor = '#001d18';
         secondblock.style.marginTop = '3%';
-        secondblock.textContent = 'Типы данных Python Price: 15'; //TODO: Смена цены
+        secondblock.textContent = 'Типы данных Python Price: 5'; //TODO: Смена цены
         secondblock.style.fontSize = '24px';
         secondblock.style.color = '#000000';
         secondblock.style.textAlign = 'center';
+        secondblock.style.borderRadius = '0 10px';
         secondblock.style.paddingTop = '10%';
         secondblock.style.paddingBottom = '10%';
-        secondblock.style.opacity = '20%';
-        secondblock.onmousedown = function(){
-            secondblock.style.backgroundColor = '100%';   
-        } 
         secondblock.onmouseover = function(){   
-            secondblock.style.opacity = '100%';               
+            secondblock.style.backgroundColor = '#00b899';          
         }
         secondblock.onmouseout = function(){   
-            secondblock.style.opacity = '20%';               
+            secondblock.style.backgroundColor = '#001d18';            
         } 
         secondblock.addEventListener('click', () => changeto(1), false);
         
         let thirdblock = document.createElement('div');
         thirdblock.style.width = '80%';
         thirdblock.style.maxHeight = '10%';
-        thirdblock.style.backgroundColor = '#871700';
+        thirdblock.style.backgroundColor = '#001d18';
         thirdblock.style.marginTop = '3%';
-        thirdblock.textContent = 'Условия и циклы Price: 25'; //TODO: Смена цены
+        thirdblock.textContent = 'Условия и циклы Price: 15'; //TODO: Смена цены
         thirdblock.style.fontSize = '24px';
         thirdblock.style.color = '#000000';
         thirdblock.style.textAlign = 'center';
         thirdblock.style.paddingTop = '10%';
+        thirdblock.style.borderRadius = '0 10px';
         thirdblock.style.paddingBottom = '10%';
-        thirdblock.style.opacity = '20%';
-        thirdblock.onmousedown = function(){
-            thirdblock.style.backgroundColor = '100%';   
-        } 
         thirdblock.onmouseover = function(){   
-            thirdblock.style.opacity = '100%';               
+            thirdblock.style.backgroundColor = '#00b899';               
         }
         thirdblock.onmouseout = function(){   
-            thirdblock.style.opacity = '20%';               
+            thirdblock.style.backgroundColor = '#001d18';                
         } 
         thirdblock.addEventListener('click', () => changeto(2), false);
 
@@ -392,10 +387,10 @@ function createShop() {
                 headers: { "content-type": "application/json; charset=utf-8" },
                 body: JSON.stringify(data)
             })
-            .then(function (message){
-                window.location.reload()
-            })
                 .catch(alert);
+            setTimeout(function () {
+                window.location.reload()
+            }, 100)
             //------------------------------------------------------------Запрос на сервер
             }    
     shopwindow.appendChild(discription);
@@ -404,6 +399,7 @@ function createShop() {
     shopwindow.appendChild(thirdblock);
     return shopwindow
 }
+
 // Главное окно
 window.onload = function () {
     let window_div = document.createElement('div');
