@@ -15,18 +15,18 @@ function task_reset() {
     reset.addEventListener('click', resetTask, false);
     function resetTask() {
         console.log('reset')
-        fetch(server_route+'delete_values')
-        .then(function (message){
+        fetch(server_route + 'delete_values')
+            .then(function (message) {
                 window.location.reload()
-        })
-        .catch(alert);
-        
+            })
+            .catch(alert);
+
 
     }
     return reset
 }
 function get_current_values() {
-    
+
 }
 
 
@@ -49,16 +49,16 @@ function creteBackground() {
     backwindow.style.backgroundSize = 'cover';
     backwindow.style.zIndex = '-1';
 
-        let repeatback = document.createElement('img');
-        repeatback.src = 'images/Background.jpg';
-        repeatback.style.marginLeft = '20%';
-        repeatback.style.marginRight = '20%';
-        repeatback.addEventListener('load', Loadback, false);
-        function Loadback() {
-            repeatback.setAttribute('width', '60%');
-            repeatback.setAttribute('height', '100%');
-            repeatback.setAttribute('z-index', '2');
-        }
+    let repeatback = document.createElement('img');
+    repeatback.src = 'images/Background.jpg';
+    repeatback.style.marginLeft = '20%';
+    repeatback.style.marginRight = '20%';
+    repeatback.addEventListener('load', Loadback, false);
+    function Loadback() {
+        repeatback.setAttribute('width', '60%');
+        repeatback.setAttribute('height', '100%');
+        repeatback.setAttribute('z-index', '2');
+    }
     backwindow.appendChild(repeatback);
     console.log('Background declare')
     return backwindow
@@ -123,7 +123,7 @@ function createfield() {
     let field = document.createElement('textarea');
     field.id = 'fieldarea';
     field.style.width = '80%';
-    field.style.height = '100%'; 
+    field.style.height = '100%';
     field.style.background = '#000';
     field.style.color = '#FFFFFF';
     field.style.fontSize = '18px';
@@ -157,7 +157,7 @@ function createfield() {
     fielddiv.appendChild(accept_mark())
     return fielddiv;
 }
-function createBackplate(){
+function createBackplate() {
     let backplate = document.createElement('div');
     backplate.style.display = 'flex';
     backplate.style.justifyContent = 'space-around';
@@ -194,7 +194,7 @@ function createbutton() {
         field = document.getElementById('fieldarea');
         coin_field = document.getElementById('pCoins');
         console.log(field.value)
-        let url = server_route+'check_task';
+        let url = server_route + 'check_task';
         let data = {
             task_string: field.value,
             level: hard_level,
@@ -254,7 +254,7 @@ function nexttask() {
         task_name = document.getElementById('heading'); // Для смены Названия <-------heading
         task_description = document.getElementById('Extest');// Для описания задачи<--Extext
         theory = document.getElementById('Answer');
-        let url = server_route+'get_task'; // action = get_task-----------
+        let url = server_route + 'get_task'; // action = get_task-----------
         let data = {
             level: hard_level,
             task: task_number
@@ -310,91 +310,91 @@ function createShop() {
     shopwindow.style.flexDirection = 'column';
     shopwindow.style.alignItems = 'center';
 
-    let urlblock = "http://127.0.0.1:8000/api/change_lvl"; // api для смены блока задач
-        let discription = document.createElement('h1');
-        discription.textContent = 'Shop of Tasks';
-        discription.style.fontSize = '24px';
-        discription.style.color = '#FFFFFF';
+    let urlblock = server_route + "change_lvl"; // api для смены блока задач
+    let discription = document.createElement('h1');
+    discription.textContent = 'Shop of Tasks';
+    discription.style.fontSize = '24px';
+    discription.style.color = '#FFFFFF';
 
-        let firstblock = document.createElement('div');
-        firstblock.style.width = '80%';
-        firstblock.style.maxHeight = '10%';
-        firstblock.style.marginTop = '3%';
+    let firstblock = document.createElement('div');
+    firstblock.style.width = '80%';
+    firstblock.style.maxHeight = '10%';
+    firstblock.style.marginTop = '3%';
+    firstblock.style.backgroundColor = '#001d18';
+    firstblock.style.opacity = '100%';
+    firstblock.textContent = 'Простейшая алгебра Price: Basic block'; //TODO: Смена цены
+    firstblock.style.fontSize = '24px';
+    firstblock.style.color = '#000000';
+    firstblock.style.textAlign = 'center';
+    firstblock.style.paddingTop = '10%';
+    firstblock.style.paddingBottom = '10%';
+    firstblock.style.borderRadius = '0 10px';
+    firstblock.onmouseover = function () {
+        firstblock.style.backgroundColor = '#00b899';
+    }
+    firstblock.onmouseout = function () {
         firstblock.style.backgroundColor = '#001d18';
-        firstblock.style.opacity = '100%';
-        firstblock.textContent = 'Простейшая алгебра Price: Basic block'; //TODO: Смена цены
-        firstblock.style.fontSize = '24px';
-        firstblock.style.color = '#000000';
-        firstblock.style.textAlign = 'center';
-        firstblock.style.paddingTop = '10%';
-        firstblock.style.paddingBottom = '10%';
-        firstblock.style.borderRadius = '0 10px';
-        firstblock.onmouseover = function(){   
-                firstblock.style.backgroundColor = '#00b899';               
-        }
-        firstblock.onmouseout = function(){   
-            firstblock.style.backgroundColor = '#001d18';              
-        }      
-        firstblock.addEventListener('click', () => changeto(0), false)
+    }
+    firstblock.addEventListener('click', () => changeto(0), false)
 
-        let secondblock = document.createElement('div');
-        secondblock.style.width = '80%';
-        secondblock.style.maxHeight = '10%';
+    let secondblock = document.createElement('div');
+    secondblock.style.width = '80%';
+    secondblock.style.maxHeight = '10%';
+    secondblock.style.backgroundColor = '#001d18';
+    secondblock.style.marginTop = '3%';
+    secondblock.textContent = 'Типы данных Python Price: 5'; //TODO: Смена цены
+    secondblock.style.fontSize = '24px';
+    secondblock.style.color = '#000000';
+    secondblock.style.textAlign = 'center';
+    secondblock.style.borderRadius = '0 10px';
+    secondblock.style.paddingTop = '10%';
+    secondblock.style.paddingBottom = '10%';
+    secondblock.onmouseover = function () {
+        secondblock.style.backgroundColor = '#00b899';
+    }
+    secondblock.onmouseout = function () {
         secondblock.style.backgroundColor = '#001d18';
-        secondblock.style.marginTop = '3%';
-        secondblock.textContent = 'Типы данных Python Price: 5'; //TODO: Смена цены
-        secondblock.style.fontSize = '24px';
-        secondblock.style.color = '#000000';
-        secondblock.style.textAlign = 'center';
-        secondblock.style.borderRadius = '0 10px';
-        secondblock.style.paddingTop = '10%';
-        secondblock.style.paddingBottom = '10%';
-        secondblock.onmouseover = function(){   
-            secondblock.style.backgroundColor = '#00b899';          
-        }
-        secondblock.onmouseout = function(){   
-            secondblock.style.backgroundColor = '#001d18';            
-        } 
-        secondblock.addEventListener('click', () => changeto(1), false);
-        
-        let thirdblock = document.createElement('div');
-        thirdblock.style.width = '80%';
-        thirdblock.style.maxHeight = '10%';
-        thirdblock.style.backgroundColor = '#001d18';
-        thirdblock.style.marginTop = '3%';
-        thirdblock.textContent = 'Условия и циклы Price: 15'; //TODO: Смена цены
-        thirdblock.style.fontSize = '24px';
-        thirdblock.style.color = '#000000';
-        thirdblock.style.textAlign = 'center';
-        thirdblock.style.paddingTop = '10%';
-        thirdblock.style.borderRadius = '0 10px';
-        thirdblock.style.paddingBottom = '10%';
-        thirdblock.onmouseover = function(){   
-            thirdblock.style.backgroundColor = '#00b899';               
-        }
-        thirdblock.onmouseout = function(){   
-            thirdblock.style.backgroundColor = '#001d18';                
-        } 
-        thirdblock.addEventListener('click', () => changeto(2), false);
+    }
+    secondblock.addEventListener('click', () => changeto(1), false);
 
-        function changeto(levelto){
-            //------------------------------------------------------------Запрос на сервер
-            let data = {
-                level: levelto
-            };
-            fetch(urlblock, {
-                method: 'POST',
-                headers: { "content-type": "application/json; charset=utf-8" },
-                body: JSON.stringify(data)
-            })
-                .catch(alert);
-            setTimeout(function () {
-                window.location.reload()
-            }, 100)
-            //------------------------------------------------------------Запрос на сервер
-            }    
+    let thirdblock = document.createElement('div');
+    thirdblock.style.width = '80%';
+    thirdblock.style.maxHeight = '10%';
+    thirdblock.style.backgroundColor = '#001d18';
+    thirdblock.style.marginTop = '3%';
+    thirdblock.textContent = 'Условия и циклы Price: 15'; //TODO: Смена цены
+    thirdblock.style.fontSize = '24px';
+    thirdblock.style.color = '#000000';
+    thirdblock.style.textAlign = 'center';
+    thirdblock.style.paddingTop = '10%';
+    thirdblock.style.borderRadius = '0 10px';
+    thirdblock.style.paddingBottom = '10%';
+    thirdblock.onmouseover = function () {
+        thirdblock.style.backgroundColor = '#00b899';
+    }
+    thirdblock.onmouseout = function () {
+        thirdblock.style.backgroundColor = '#001d18';
+    }
+    thirdblock.addEventListener('click', () => changeto(2), false);
+
+    function changeto(levelto) {
+        //------------------------------------------------------------Запрос на сервер
+        let data = {
+            level: levelto
+        };
+        fetch(urlblock, {
+            method: 'POST',
+            headers: { "content-type": "application/json; charset=utf-8" },
+            body: JSON.stringify(data)
+        })
+            .catch(alert);
+        setTimeout(function () {
+            window.location.reload()
+        }, 100)
+        //------------------------------------------------------------Запрос на сервер
+    }
     shopwindow.appendChild(discription);
-    shopwindow.appendChild(firstblock);   
+    shopwindow.appendChild(firstblock);
     shopwindow.appendChild(secondblock);
     shopwindow.appendChild(thirdblock);
     return shopwindow
@@ -406,7 +406,7 @@ window.onload = function () {
     window_div.style.marginLeft = '25%';
     window_div.style.marginRight = '25%';
     document.body.style.margin = '0px';
-    fetch(server_route+'get_values')
+    fetch(server_route + 'get_values')
         .then(function (response) {
             return response.json();
         })
@@ -417,7 +417,7 @@ window.onload = function () {
             hard_level = message_response.level;
             task_number = message_response.task;
 
-            
+
             window_div.appendChild(task_reset());
             window_div.appendChild(createTextExhample());
             window_div.appendChild(createfield());
